@@ -27,8 +27,7 @@ ui <- dashboardPage(skin="purple",
                     header<-dashboardHeader(title = "Progression of Botrytis"),
                     sidebar<-dashboardSidebar(
                       sidebarMenu(menuItem("about", tabName = "about", icon = icon("archive")),
-                                  menuItem("application", tabName = "app",icon = icon("laptop")))
-                    ),
+                                  menuItem("application", tabName = "app",icon = icon("laptop")))),
                     dashboardBody(
                       tabItems(
                         tabItem(tabName = "about",
@@ -42,25 +41,20 @@ ui <- dashboardPage(skin="purple",
                                          ),
                         tabItem(tabName = "app",
                                 fluidRow(
-                                  column(3,
-                                         box(width = 12, title = "Please select type of cultivar",
-                                             selectizeInput("type", "Type", selected = "C", choices = c("C", "D"))),
-                                             selectizeInput("treatment", "Treatment", choices = levels(as.factor(df.csv$Treat)), selected = "1"),
-                                  column(9,
-                                         tabBox(
+                                  column(box(width = 12, title = "Please select type of cultivar"),
+                                             selectizeInput("type", "Type", selected = "C", choices = c("C", "D")),
+                                             selectizeInput("treatment", "Treatment", choices = levels(as.factor(df.csv$Treat)), selected = "1")),
+                                  column( tabBox(
                                            id = "tabset1", height = "500px", width = "250px",
                                            tabPanel("Disease Progression Curves", 
                                                     br(),
                                                     
-                                                    plotOutput("curves", click = "plot_click"), 
-                                                    h4("Click on the peak of a bar to view the staff_id and z_score."),
-                                                    verbatimTextOutput("info"), 
+                                                    plotOutput("plot", click = "plot_click"), 
+                                                    h4("Click on the peak of a bar to view the staff_id and z_score.")
                                                     
-                                         
-                                                    verbatimTextOutput("info2")
                                                     )))
                                            )
                                          ))
                                 )
                         )
-                      ))
+                      )
