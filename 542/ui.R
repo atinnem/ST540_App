@@ -32,20 +32,19 @@ ui <- dashboardPage(skin="purple",
                       tabItems(
                         tabItem(tabName = "about",
                                 fluidRow(
-                                  column(6,
+                                 
                                          h1("What does this app do?"),
                                          box(background = "purple", width = 12,
                                              h4("Disease progression")),
                                              h4("mpore")
-                                             )
-                                         ),
+                                             
+                                         )),
                         tabItem(tabName = "app",
                                 fluidRow(
-                                  column(box(width = 12, title = "Please select type of cultivar"),
+                                  box(width = 12, title = "Please select type of cultivar"),
                                              selectizeInput("type", "Type", selected = "C", choices = c("C", "D")),
                                              selectizeInput("treatment", "Treatment", choices = levels(as.factor(df.csv$Treat)), selected = "1")),
-                                  column( tabBox(
-                                           id = "tabset1", height = "500px", width = "250px",
+                                   #tabBox( id = "tabset1", height = "500px", width = "250px"),
                                            tabPanel("Disease Progression Curves", 
                                                     br(),
                                                     
@@ -54,7 +53,6 @@ ui <- dashboardPage(skin="purple",
                                                     
                                                     )))
                                            )
-                                         ))
-                                )
-                        )
-                      )
+                                         )
+                          
+                      
