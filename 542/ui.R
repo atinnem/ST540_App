@@ -8,13 +8,14 @@
 
 library(shiny)
 library(tidyverse)
+library(shinydashboard)
 library(ggplot2)
 
 
 df.csv<-read_csv("Botrytis Data.csv")
 
 #create factors
-df.txt$Table<-as.factor(df.txt$Table)
+
 df.csv$Table<-as.factor(df.csv$Table)
 df.csv$Treat<-as.factor(df.csv$Treat)
 df.csv$Cv<-as.factor(df.csv$Cv)
@@ -58,10 +59,8 @@ ui <- dashboardPage(skin="purple",
                                          
                                                     verbatimTextOutput("info2")
                                                     )))
-                                                    
-                                                    
                                            )
                                          ))
                                 )
                         )
-                      )))
+                      ))
