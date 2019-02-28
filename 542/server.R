@@ -33,7 +33,7 @@ getdata<-reactive({
       }
 })
 
-# plot z score of Report Times
+# plot 
   output$plot <- renderPlot({
     #get filtered data
     list<-getdata()
