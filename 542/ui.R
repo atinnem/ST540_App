@@ -14,12 +14,16 @@ library(ggplot2)
 
 df.csv<-read_csv("Botrytis Data.csv")
 
-#create factors
+#create factors, rename factors
 
 df.csv$Table<-as.factor(df.csv$Table)
 df.csv$Treat<-as.factor(df.csv$Treat)
 df.csv$Cv<-as.factor(df.csv$Cv)
 
+levels(df.csv$Cv)[levels(df.csv$Cv)=="V"]<-"Vendela"
+levels(df.csv$Cv)[levels(df.csv$Cv)=="C"]<-"Cuenca"
+levels(df.csv$Cv)[levels(df.csv$Cv)=="D"]<-"Daphnee"
+levels(df.csv$Cv)[levels(df.csv$Cv)=="F"]<-"Freedom"
 
 
 
@@ -41,15 +45,14 @@ ui <- dashboardPage(skin="purple",
                                          )),
                         tabItem(tabName = "app",
                                 fluidRow(
-                                  box(width = 12, title = "Please select type of cultivar"),
-                                             selectizeInput("type", "Type", selected = "C", choices = c("C", "D")),
-                                             selectizeInput("treatment", "Treatment", choices = levels(as.factor(df.csv$Treat)), selected = "1")),
+                                  box(background = "purple", width = 5, title = "Select type of cultivar to visualize the effect the treatments had on each type of rose.  Select 'Water' or 'Botrytis' to "),
+                                             selectizeInput("type", "Please select type of cultivar", selected = "C", choices = levels(df.csv$Cv)),
+                                             selectizeInput("treatment", "Treatment", choices = c("Both", "Water", "Botrytis"), selected = "Both")),
                                    #tabBox( id = "tabset1", height = "500px", width = "250px"),
                                            tabPanel("Disease Progression Curves", 
                                                     br(),
                                                     
-                                                    plotOutput("plot", click = "plot_click"), 
-                                                    h4("Click on the peak of a bar to view the staff_id and z_score.")
+                                                    plotOutput("plot", click = "plot_click")
                                                     
                                                     )))
                                            )
