@@ -39,20 +39,20 @@ ui <- dashboardPage(skin="purple",
                                  
                                          h1("What does this app do?"),
                                          box(background = "purple", width = 12,
-                                             h4("Disease progression")),
-                                             h4("mpore")
+                                             h4("The aim of this app is to aid in the visualization of the disease progression of Botrytis on roses. "))
                                              
                                          )),
                         tabItem(tabName = "app",
                                 fluidRow(
-                                  box(background = "purple", width = 5, title = "Select type of cultivar to visualize the effect the treatments had on each type of rose.  Select 'Water' or 'Botrytis' to "),
+                                  column(3, 
+                                  #box(background = "purple", width = 5, title = "Select type of cultivar to visualize the effect the treatments had on each type of rose.  Select 'Water' or 'Botrytis' to see the change in curves based off of the inoculation status of the roses. "),
                                              selectizeInput("type", "Please select type of cultivar", selected = "C", choices = levels(df.csv$Cv)),
-                                             selectizeInput("treatment", "Treatment", choices = c("Both", "Water", "Botrytis"), selected = "Both")),
+                                             selectizeInput("treatment", "Treatment", choices = c( "Water", "Botrytis", "Both"), selected = "Both"))),
                                    #tabBox( id = "tabset1", height = "500px", width = "250px"),
                                            tabPanel("Disease Progression Curves", 
                                                     br(),
                                                     
-                                                    plotOutput("plot", click = "plot_click")
+                                                    plotOutput("plot")
                                                     
                                                     )))
                                            )
