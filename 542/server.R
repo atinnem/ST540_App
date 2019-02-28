@@ -39,7 +39,7 @@ getdata<-reactive({
     list<-getdata()
     list<-list %>% filter(Cv==input$type)
     
-      ggplot(list, aes(x=Day, y = Prop_undamaged, col = Treat))+ geom_line() +labs(x = "Day", y = "Proportion undamaged") + xlim(1,5)
+      ggplot(list, aes(x=Day, y = Prop_undamaged, col = Treat))+ geom_line() +labs(x = "Day", y = "Proportion undamaged", title = "Percentage of Unaffected Roses") + xlim(1,5)
         
       })
       
