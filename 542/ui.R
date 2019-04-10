@@ -30,11 +30,11 @@ levels(df.csv$Cv)[levels(df.csv$Cv)=="F"]<-"Freedom"
 ui <- dashboardPage(skin="purple",
                     header<-dashboardHeader(title = "Botrytis damage"),
                     sidebar<-dashboardSidebar(
-                      sidebarMenu(menuItem("about", tabName = "about", icon = icon("archive")),
-                                  menuItem("application", tabName = "app",icon = icon("laptop")))),
+                      sidebarMenu(menuItem("About", tabName = "About", icon = icon("archive")),
+                                  menuItem("Application", tabName = "App",icon = icon("laptop")))),
                     dashboardBody(
                       tabItems(
-                        tabItem(tabName = "about",
+                        tabItem(tabName = "About",
                                 fluidRow(
                                  
                                          h1("What does this app do?"),
@@ -55,7 +55,7 @@ ui <- dashboardPage(skin="purple",
                                              )
                                              
                                          )),
-                        tabItem(tabName = "app",
+                        tabItem(tabName = "App",
                                 fluidRow(
                                   column(3, 
                                          selectizeInput("type", "Select type of cultivar", selected = "C", choices = levels(df.csv$Cv)),
@@ -65,7 +65,7 @@ ui <- dashboardPage(skin="purple",
                                                     br(),
                                                     
                                                     plotOutput("plot"),
-                                                    h5("Please note, the proportions do not always decrease as expected as flowers  removed from the study as they were terminated.  This affected the overall number of flowers in each day's proprotion. ")
+                                                    h5("Please note, the proportions do not always decrease as expected as flowers  removed from the study as they were terminated.  This affected the overall number of flowers in each day's proportion. ")
                                                     
                                                     )))
                                            )
